@@ -32,8 +32,10 @@
 
 // Display the first five rows with odd-numbered columns using 'iloc'
 
-    oc = cars.iloc[:5, ::2]
-    oc
+    oc = cars.iloc[:, 1::2]
+
+    result = oc.head()
+    result
 
 // Display the row that contains the ‘Model’ of ‘Mazda RX4’
 
