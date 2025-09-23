@@ -1,50 +1,42 @@
 # HAPAN_MGP_PA3
 
 ### PROBLEM 1
+- We need Pandas to handle the dataset.  
+- We use .read_csv() to load cars.csv into a DataFrame.  
+- We use .head() and .tail() to preview the first and last 5 rows.  
+- Output: The DataFrame, first 5 rows, and last 5 rows of the dataset.  
 
-// Import pandas
-    
-    import pandas as pd
+```Python
+import pandas as pd             # Import Pandas in library
 
-// Load .csv file
-    
-    cars = pd.read_csv('cars.csv')
-    cars
+cars = pd.read_csv('cars.csv')  # Load dataset into a DataFrame
+cars                            # Display dataset
 
-// Display first five rows
-    
-    cars.head()
-
-// Display last five rows
-    
-    cars.tail()
+cars.head()                     # Display first 5 rows
+cars.tail()                     # Display last 5 rows
+```
 
 ### PROBLEM 2
+- We need .iloc[] to select columns by position. 1::2 means start at column 1 and take every second column (odd-numbered).  
+- We use .head() to show only the first 5 rows of this selection.  
+- We need .loc[] to filter rows by conditions or labels.  
+- Output: Subsets of the DataFrame according to the conditions.  
 
-// Import pandas
+```Python
+import pandas as pd                                     # Import Pandas in library
 
-    import pandas as pd
+cars = pd.read_csv('cars.csv')                          # Load dataset into a DataFrame
+cars                                                    # Display dataset
 
-// Load .csv file
-    
-    cars = pd.read_csv('cars.csv')
-    cars
+oc = cars.iloc[:, 1::2]                                 # Select odd-numbered columns (index 1, 3, 5, …)
+result = oc.head()                                      # Display first 5 rows of selected columns
+result
 
-// Display the first five rows with odd-numbered columns using 'iloc'
+cars[0:1]                                               # Display the row for Mazda RX4
 
-    oc = cars.iloc[:, 1::2]
+cars.loc[cars['Model']=='Camaro Z28', ['Model','cyl']]  # Show cylinders of Camaro Z28
 
-    result = oc.head()
-    result
+cars.loc[[1,28,18],['Model','cyl','gear']]              # Show cylinders & gear for 3 specific models
+```
 
-// Display the row that contains the ‘Model’ of ‘Mazda RX4’
-
-    cars[0:1]
-
-// Show how many cylinders does the car model ‘Camaro Z28’ have using 'loc'
-
-    cars.loc[cars['Model']=='Camaro Z28', ['Model', 'cyl']]
-
-// Show how many cylinders and what gear type the car models ‘Mazda RX4 Wag’, ‘Ford Pantera L’ and ‘Honda Civic’ have using 'loc'
-
-    cars.loc[[1,28,18],['Model', 'cyl', 'gear']]
+VERSION 2
